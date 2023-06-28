@@ -15,9 +15,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 let hero=document.getElementById('hero')
 let villian = document.getElementById('villian')
 let gameOver = document.getElementById('gameOver');
+let score = document.getElementById('score');
 root.render(
   <React.StrictMode>
-    <App hero={hero} villian={villian} gameOver={gameOver}/>
+    <App hero={hero} villian={villian} gameOver={gameOver} score={score}/>
   </React.StrictMode>
 );
 

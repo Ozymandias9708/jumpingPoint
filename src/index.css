@@ -71,4 +71,8 @@ code {
   color: black;
   font-size: 5vh;
   text-decoration: underline;
+  position: absolute;
+  top: 10px;
+  /* margin: 10px auto; */
+  left: 48vw;
 }

@@ -5,17 +5,17 @@ import React from 'react'
 import sound from './sounds/music.mp3'
 import jump from './sounds/stressedPikachu.mp3'
 
-    
+
 
 // import Sound from 'react-sound';
 
-function App({hero,villian,gameOver}) {
+function App({hero,villian,gameOver,score}) {
   let cross=true;
   let Score=0;
+// const [cross,setCross]=useState(true);
 
 
-
-  const [score,setScore]=useState(10)
+  // const [score,setScore]=useState(10)
 
   // for(let i=0;i<10;i--){
   //   villian.style.transition="all ease-in 0.8s";  
@@ -25,7 +25,7 @@ function App({hero,villian,gameOver}) {
   //   villian.style.right="0"
   // },800);
   // }
-
+  let notPressed=true;
   document.onkeydown=(e)=>{
     // new Audio(sound).play();
     // console.log(e.keyCode);
@@ -38,7 +38,11 @@ function App({hero,villian,gameOver}) {
     //         hero.classList.remove('animateHero')
     //     }, 500);
 
-    if(e.keyCode ===38){
+    if(e.keyCode ===38 && notPressed){
+      notPressed=false;
+      setTimeout(() => {
+        notPressed=true;
+      },470)
       new Audio(jump).play();
       hero.style.transition="all ease-in 0.2s";
 
@@ -50,6 +54,7 @@ function App({hero,villian,gameOver}) {
         // new Audio(jump).pause();
         hero.style.bottom="0"
       },300);
+
     }
     
 
@@ -78,7 +83,7 @@ function App({hero,villian,gameOver}) {
     // if((hx-vx)<20)console.log("gameOver");
     let diffX=Math.abs(hx-vx);
     let diffY=Math.abs(hy-vy);
-    if(diffX<20 && diffY<50){console.log("gameOver");
+    if(diffX<65 && diffY<50){
 
     // villian.classList.remove("challenger");
     villian.style.animation="a";
@@ -93,22 +98,29 @@ function App({hero,villian,gameOver}) {
         }, 4800);
 
   }
-  // else if(cross && diffX<200){
-  //   Score += 1;
-  //       setScore(score=>score+1);
-  //       cross = false;
-  //       setTimeout(() => {
-  //           cross = true;
-  //       }, 500);
+  else if( diffX<140 && cross){
+    // {Score += 1;}
+      console.log(Score);
+      Score=Score+1;
+      console.log("after",Score);
+      score.innerHTML="Score: " + Score;
+        // setScore(score=>score+1);
+        cross = false;
+        // setCross(false);
+        console.log(cross);
+        setTimeout(() => {
+            // setCross(true);
+            cross = true;
+        }, 1000);
         
-  // }
+  }
 
   },10)
   
   return (
     <div className="App">
       
-    <div><p>Score: {Score}</p></div>
+    
     
     </div>
   );

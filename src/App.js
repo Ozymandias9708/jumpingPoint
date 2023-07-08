@@ -100,14 +100,14 @@ function App({hero,villian,gameOver,score}) {
   }
   else if( diffX<140 && cross){
     // {Score += 1;}
-      console.log(Score);
+      // console.log(Score);
       Score=Score+1;
-      console.log("after",Score);
+      // console.log("after",Score);
       score.innerHTML="Score: " + Score;
         // setScore(score=>score+1);
         cross = false;
         // setCross(false);
-        console.log(cross);
+        // console.log(cross);
         setTimeout(() => {
             // setCross(true);
             cross = true;
